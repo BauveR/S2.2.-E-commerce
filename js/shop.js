@@ -87,28 +87,21 @@ function buy(id) {
         addProduct.quantity = 1; 
         cart.push(addProduct);
     }
-
-
-   
-
-
-
-
-
-   
-
-
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cart array
 }
 
 // Exercise 2
-function cleanCart() {
+const cleanCart = () => ({
+    cart:[]
+});
 
-}
+console.log(cart);
 
 // Exercise 3
 function calculateTotal() {
+
+cart.reduce((acc,product) => 
+    acc +(product.price *product.quantity),0);
+    
     // Calculate total price of the cart using the "cartList" array
 }
 
@@ -127,6 +120,11 @@ function printCart() {
 
 // Exercise 7
 function removeFromCart(id) {
+
+    const index = cart.findIndex(product => product.id === id);
+        console.log (cart);    
+        cart.splice(index,1);
+        console.log (cart);
 
 }
 
