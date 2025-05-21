@@ -87,6 +87,9 @@ function buy(id) {
         addProduct.quantity = 1; 
         cart.push(addProduct);
     }
+    
+    calculateTotal();
+
 }
 
 // Exercise 2
@@ -99,8 +102,12 @@ console.log(cart);
 // Exercise 3
 function calculateTotal() {
 
-cart.reduce((acc,product) => 
-    acc +(product.price *product.quantity),0);
+ let totalCart = cart.reduce((acc,product) => 
+    acc +(product.price * product.quantity),0);
+
+document.getElementById("total_price").textContent = totalCart.toFixed(2);
+
+return totalCart;
     
     // Calculate total price of the cart using the "cartList" array
 }
