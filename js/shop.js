@@ -93,32 +93,52 @@ function buy(id) {
 }
 
 // Exercise 2
-const cleanCart = () => ({
-    cart:[]
-});
+function cleanCart() {
+    cart = [];
+    total = 0;
+}
 
 console.log(cart);
 
 // Exercise 3
 function calculateTotal() {
+    total = 0;
 
- let totalCart = cart.reduce((acc,product) => 
-    acc +(product.price * product.quantity),0);
+         cart.forEach ((product) => {
+            total += applyPromotionsCart(product);
+         });
 
-document.getElementById("total_price").textContent = totalCart.toFixed(2);
-
-return totalCart;
-    
-    // Calculate total price of the cart using the "cartList" array
-}
+         return total;
+       
+    } 
+    // Calculate total price of the cart using the "cartList" arra
 
 // Exercise 4
-function applyPromotionsCart() {
+function applyPromotionsCart(product) {
+
+    let totalPrice;
+
+    if (product.quantity >= product.offer.number) {
+
+        const discount = (product.price * product.offer.percent) / 100;
+        const discountedPrice = product.price - discount;
+        totalPrice = discountedPrice * product.quantity;
+        return totalPrice;
+    } else {
+        totalPrice = product.price * product.quantity;
+        return totalPrice;
+    }
+    }
+
     // Apply promotions to each item in the array "cart"
-}
 
 // Exercise 5
-function printCart() {
+function printCart(totalCart,discountPrice) {
+
+    document.getElementById("total_price").textContent = totalCart.toFixed(2);
+
+    document.getElementById("total_price").textContent = discountPrice.toFixed(2);
+
     // Fill the shopping cart modal manipulating the shopping cart dom
 }
 
