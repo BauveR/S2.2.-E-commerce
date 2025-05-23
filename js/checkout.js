@@ -1,28 +1,16 @@
-
 // Exercise 6
-function validate() {
-	var error = 0;
-	// Get the input fields
-	var fName = document.getElementById("fName");
-	var fEmail = document.getElementById("fEmail");
+(() => {
+    'use strict'
+    const form = document.querySelector('.needs-validation')
 
-	// Get the error elements
-	var errorName = document.getElementById("errorName");
-	var errorEmail = document.getElementById("errorEmail");  
-	
-	// Validate fields entered by the user: name, phone, password, and email
-	if(fName.value == ""){
-		error++;
-	}
+    form.addEventListener('submit', (event) => {
 
-	if(fEmail.value == ""){
-		error++;
-	}
-	 
-	if(error>0){
-		alert("Error");
-	}else{
-		alert("OK");
-	}
+        if (!form.checkValidity() ) {
+            event.preventDefault()
+            event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+    }, false)
+})();
 
-}
+
