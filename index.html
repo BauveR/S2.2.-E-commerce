@@ -245,18 +245,29 @@
 	</section>
 
 	<!-- Footer-->
-	<footer class="py-3 bg-primary">
+	<footer class="py-3" style="background: #DC047C">
 		<div class="container">
 			<p class="m-0 text-center text-white">Copyright &copy; WOW shop 2025</p>
 		</div>
 	</footer>
 
-	<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" 
+		id="cartModal" 
+		tabindex="-1" 
+		aria-labelledby="exampleModalLabel" 
+		aria-hidden="true">
+
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-cart-arrow-down"></i> My Cart</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					<h5 class="modal-title" id="exampleModalLabel">
+						<i class="fas fa-cart-arrow-down"></i> My Cart
+					</h5>
+					<button 
+					type="button" 
+					class="btn-close" 
+					data-bs-dismiss="modal" 
+					aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
 					<h3 class="text-center bill px-5">Shopping Cart</h3>
@@ -266,28 +277,13 @@
 								<th scope="col">Product</th>
 								<th scope="col">Price</th>
 								<th scope="col">Qty.</th>
-								<th scope="col">Total <small>(with discount)</small></th>
+								<th scope="col">Total <small>(with discount)</small>
+								</th>
+								<th scope="col">Remove</th>
 							</tr>
 						</thead>
 						<tbody id="cart_list">
-							<tr>
-								<th scope="row">Cooking oil</th>
-								<td>$10.5</td>
-								<td>2</td>
-								<td>$21</td>
-							</tr>
-							<tr>
-								<th scope="row">Pasta</th>
-								<td>$6.25</td>
-								<td>1</td>
-								<td>$6.25</td>
-							</tr>
-							<tr>
-								<th scope="row">Lawn dress</th>
-								<td>$15</td>
-								<td>3</td>
-								<td>$45</td>
-							</tr>
+							
 						</tbody>
 					</table>
 					<div class="text-center fs-3">

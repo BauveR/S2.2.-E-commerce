@@ -89,6 +89,7 @@ function buy(id) {
     }
     
     calculateTotal();
+    printCart();
 
 }
 
@@ -96,6 +97,9 @@ function buy(id) {
 function cleanCart() {
     cart = [];
     total = 0;
+
+    printCart();
+
 }
 
 console.log(cart);
@@ -118,7 +122,7 @@ function applyPromotionsCart(product) {
 
     let totalPrice;
 
-    if (product.quantity >= product.offer.number) {
+    if (product.offer != null && product.quantity >= product.offer.number) {
 
         const discount = (product.price * product.offer.percent) / 100;
         const discountedPrice = product.price - discount;
@@ -133,11 +137,32 @@ function applyPromotionsCart(product) {
     // Apply promotions to each item in the array "cart"
 
 // Exercise 5
-function printCart(totalCart,discountPrice) {
+function printCart() {
 
-    document.getElementById("total_price").textContent = totalCart.toFixed(2);
+        var cartListContent =  "";
 
-    document.getElementById("total_price").textContent = discountPrice.toFixed(2);
+        cart.forEach ((product) => {
+            cartListContent += `
+        					<tr>
+								<th scope="row">${product.name}</th>
+								<td>${product.price}</td>
+								<td>${product.quantity}</td>
+								<td>${applyPromotionsCart(product)}</td>
+                                <td>
+                                <a href="javascript:void(0)" onclick="removeFromCart(${product.id})" class="btn btn-primary m-3">-</a>
+
+                                
+							</tr>
+                            `
+                            });
+
+
+        document.getElementById('cart_list').innerHTML = cartListContent
+
+
+        document.getElementById("total_price").textContent = total.toFixed(2);
+
+        document.getElementById("count_product").textContent = calNumberish();
 
     // Fill the shopping cart modal manipulating the shopping cart dom
 }
@@ -149,11 +174,34 @@ function printCart(totalCart,discountPrice) {
 function removeFromCart(id) {
 
     const index = cart.findIndex(product => product.id === id);
-        console.log (cart);    
-        cart.splice(index,1);
-        console.log (cart);
+    
+    let productToRemove = cart[index];
 
+    if (productToRemove.quantity == 1) {
+
+        cart.splice(index,1);
+    } else {
+
+        productToRemove.quantity -= 1;
+
+    }
+
+ calculateTotal();
+printCart();
 }
+
+function calNumberish(){
+
+    let numberish = 0;
+
+    cart.forEach ((product) => {
+        numberish += product.quantity 
+    });
+
+    return numberish;
+}
+
+
 
 function open_modal() {
     printCart();
