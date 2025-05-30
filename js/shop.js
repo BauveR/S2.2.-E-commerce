@@ -77,17 +77,17 @@ var total = 0;
 // Exercise 1
 function buy(id) {
 
-    const addProduct = products.find( product => product.id === id);
+    const findProduct = products.find( product => product.id === id);
     
     if (cart.some( product => product.id === id)){
         const index = cart.findIndex(product => product.id === id);
         cart[index].quantity++;
 
     } else{
-        addProduct.quantity = 1; 
-        cart.push(addProduct);
+        findProduct.quantity = 1; 
+        cart.push(findProduct);
     }
-    
+
     calculateTotal();
     printCart();
 
@@ -147,7 +147,7 @@ function printCart() {
 								<th scope="row">${product.name}</th>
 								<td>${product.price}</td>
 								<td>${product.quantity}</td>
-								<td>${applyPromotionsCart(product)}</td>
+								<td>${applyPromotionsCart(product).toFixed(2)}</td>
                                 <td>
                                 <a href="javascript:void(0)" onclick="removeFromCart(${product.id})" class="btn btn-primary m-3">-</a>
 
