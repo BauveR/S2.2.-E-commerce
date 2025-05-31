@@ -126,11 +126,10 @@ function applyPromotionsCart(product) {
         const discount = (product.price * product.offer.percent) / 100;
         const discountedPrice = product.price - discount;
         totalPrice = discountedPrice * product.quantity;
-        return totalPrice;
     } else {
         totalPrice = product.price * product.quantity;
-        return totalPrice;
     }
+    return totalPrice;
     }
 
     // Apply promotions to each item in the array "cart"
