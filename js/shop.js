@@ -76,18 +76,17 @@ var total = 0;
 
 // Exercise 1
 function buy(id) {
-
-    const addProduct = products.find( product => product.id === id);
-    
+   
     if (cart.some( product => product.id === id)){
         const index = cart.findIndex(product => product.id === id);
         cart[index].quantity++;
 
     } else{
-        addProduct.quantity = 1; 
-        cart.push(addProduct);
+        const findProduct = products.find( product => product.id === id);
+        findProduct.quantity = 1; 
+        cart.push(findProduct);
     }
-    
+
     calculateTotal();
     printCart();
 
@@ -127,11 +126,10 @@ function applyPromotionsCart(product) {
         const discount = (product.price * product.offer.percent) / 100;
         const discountedPrice = product.price - discount;
         totalPrice = discountedPrice * product.quantity;
-        return totalPrice;
     } else {
         totalPrice = product.price * product.quantity;
-        return totalPrice;
     }
+    return totalPrice;
     }
 
     // Apply promotions to each item in the array "cart"
@@ -147,7 +145,7 @@ function printCart() {
 								<th scope="row">${product.name}</th>
 								<td>${product.price}</td>
 								<td>${product.quantity}</td>
-								<td>${applyPromotionsCart(product)}</td>
+								<td>${applyPromotionsCart(product).toFixed(2)}</td>
                                 <td>
                                 <a href="javascript:void(0)" onclick="removeFromCart(${product.id})" class="btn btn-primary m-3">-</a>
 
