@@ -76,14 +76,13 @@ var total = 0;
 
 // Exercise 1
 function buy(id) {
-
-    const findProduct = products.find( product => product.id === id);
-    
+   
     if (cart.some( product => product.id === id)){
         const index = cart.findIndex(product => product.id === id);
         cart[index].quantity++;
 
     } else{
+        const findProduct = products.find( product => product.id === id);
         findProduct.quantity = 1; 
         cart.push(findProduct);
     }
