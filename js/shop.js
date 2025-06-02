@@ -130,7 +130,7 @@ function applyPromotionsCart(product) {
         return totalPrice;
     } else {
         totalPrice = product.price * product.quantity;
-        return totalPrice;
+        return parseFloat(totalPrice.toFixed(2));
     }
     }
 
@@ -158,10 +158,7 @@ function printCart() {
 
 
         document.getElementById('cart_list').innerHTML = cartListContent
-
-
         document.getElementById("total_price").textContent = total.toFixed(2);
-
         document.getElementById("count_product").textContent = calNumberish();
 
     // Fill the shopping cart modal manipulating the shopping cart dom
